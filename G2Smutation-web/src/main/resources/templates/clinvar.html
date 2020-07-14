@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+	<!-- For dataTables -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="/css/datatable.css"></link>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<!-- For Lobipanel -->
+	<link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/lobipanel.min.css"/>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/lobipanel.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    
+</head>
+
+
+<body>						  				
+	<div class="card-body">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="text-align:center">Tpyes</th>
+				<th style="text-align:center">Content</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">MUTATION_ID</th>
+				<td style="text-align:center" th:text="${clinvar.mutationId}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CHR</th>
+				<td style="text-align:center" th:text="${clinvar.chr}"></td>
+			</tr>  
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLINVAR_ID</th>
+				<td style="text-align:center" th:text="${clinvar.clinvarID}"></td>
+			</tr>  
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">REF</th>
+				<td style="text-align:center" th:text="${clinvar.ref}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">ALT</th>
+				<td style="text-align:center" th:text="${clinvar.alt}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">AF_ESP</th>
+				<td style="text-align:center" th:text="${clinvar.AFESP}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">AF_EXAC</th>
+				<td style="text-align:center" th:text="${clinvar.AFEXAC}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">AF_TGP</th>
+				<td style="text-align:center" th:text="${clinvar.AFTGP}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">ALLELEID</th>
+				<td style="text-align:center" th:text="${clinvar.ALLELEID}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLNDN</th>
+				<td style="text-align:center" th:text="${clinvar.CLNDN}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLNDNINCL</th>
+				<td style="text-align:center" th:text="${clinvar.CLNDNINCL}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLNDISDB</th>
+				<td style="text-align:center" th:text="${clinvar.CLNDISDB}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLNDISDBINCL</th>
+				<td style="text-align:center" th:text="${clinvar.CLNDISDBINCL}"></td>
+			</tr>
+			<tr th:each="clinvar : ${clinvars}">
+				<th style="text-align:center">CLNHGVS</th>
+				<td style="text-align:center" th:text="${clinvar.CLNHGVS}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	</div>
+</body>
+</html>

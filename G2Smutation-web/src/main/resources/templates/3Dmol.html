@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>3Dmol and deep learning</title>
+<script src="build/3Dmol.js"></script>
+<script src="viewer.js"></script>
+<script src="http://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script> 
+</head>
+<body>
+<!--
+<h2 th:text="${pdb}"></h2>
+<h2 th:text="${chain}"></h2>
+<h2 th:text="${resi}"></h2>
+-->
+
+<div style="
+
+     height: 600px; 
+     width: 800px;
+     position: relative;" 
+     
+     class='viewer_3Dmoljs' 
+     
+     th:attr="data-pdb=${pdb},data-select2=${dataSelect2},data-select3=${dataSelect3}"
+     
+     data-backgroundcolor='0xffffff' 
+     data-style='cartoon:color=#F7EAF1;cartoon:opacity=0.4'
+     data-style2='cartoon:color=#F8B4D7;cartoon:opacity=0.9'
+     data-style3='cartoon:color=#FF3030;stick:color=#FF3030'
+></div>
+
+<div id="container-01" class="mol-container"></div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+	<!-- For dataTables -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="/css/datatable.css"></link>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<!-- For Lobipanel -->
+	<link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/lobipanel.min.css"/>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/lobipanel.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    
+</head>
+
+
+<body>						  				
+	<div class="card-body">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="text-align:center">Tpyes</th>
+				<th style="text-align:center">Content</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">MUTATION_ID</th>
+				<td style="text-align:center" th:text="${tcga.mutationId}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">CHR</th>
+				<td style="text-align:center" th:text="${tcga.chr}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">HUGO_SYMBOL</th>
+				<td style="text-align:center" th:text="${tcga.HUGOSYMBOL}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">ENTREZ_GENE_ID</th>
+				<td style="text-align:center" th:text="${tcga.ENTREZGENEID}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">CENTER</th>
+				<td style="text-align:center" th:text="${tcga.CENTER}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">NCBI_BUILD</th>
+				<td style="text-align:center" th:text="${tcga.NCBIBUILD}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">CHROMOSOME</th>
+				<td style="text-align:center" th:text="${tcga.CHROMOSOME}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">START_POSITION</th>
+				<td style="text-align:center" th:text="${tcga.STARTPOSITION}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">END_POSITION</th>
+				<td style="text-align:center" th:text="${tcga.ENDPOSITION}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">STRAND</th>
+				<td style="text-align:center" th:text="${tcga.STRAND}"></td>
+			</tr>
+			<tr th:each="tcga : ${tcgas}">
+				<th style="text-align:center">VARIANT_CLASSIFICATION</th>
+				<td style="text-align:center" th:text="${tcga.VARIANTCLASSIFICATION}"></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+
+<body>
+<script src="https://cdn.rawgit.com/arose/ngl/v0.10.4-1/dist/ngl.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+	document.addEventListener("DOMContentLoaded", function () {
+    	var stage = new NGL.Stage("viewport", { backgroundColor: "white" } );
+      	stage.loadFile(/*[[${loadFile}]]*/).then( function( o ){  
+    		// get all atoms within 5 Angstrom of retinal
+    	    var selection = new NGL.Selection(/*[[${Selection}]]*/);
+    	    var radius = 0;
+    	    var atomSet = o.structure.getAtomSetWithinSelection( selection,radius );
+    	    var atomSet2 = o.structure.getAtomSetWithinGroup( atomSet );
+    	    o.addRepresentation( "ball+stick", { color: "red", sele: atomSet2.toSeleString() } );
+    	    o.addRepresentation( "cartoon",  {colorScheme: "bfactor", opacity: 0.2});
+    	    o.autoView();
+    	});
+    });
+/*]]>*/
+</script>
+<div id="viewport" style="width:430px;height:400px"></div>								
+</body>
+</html>

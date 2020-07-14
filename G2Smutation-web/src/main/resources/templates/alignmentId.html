@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+	<!-- For dataTables -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="/css/datatable.css"></link>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<!-- For Lobipanel -->
+	<link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/lobipanel.min.css"/>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/lobipanel.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    
+</head>
+
+
+<body>
+	<nav style="margin:0px" class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  		<a class="navbar-brand" th:href="@{/}" href="frontpage.html">G2S Web Service</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		
+  		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    		<ul class="navbar-nav mr-auto">
+      			
+      			<li class="nav-item dropdown">
+        			<a style="font-size:1.2em" class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Databases</a>
+        				<div class="dropdown-menu" aria-labelledby="dropdown01">
+          					<a class="dropdown-item" th:href="@{/database}" href="database.html">Usage Database</a>
+          					<a class="dropdown-item" th:href="@{/rs}" href="rs.html">RS Databases</a>
+        				</div>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/pageapi}" href="api.html">API</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/sequence}" href="sequence.html">Sequence</a>
+      			</li>
+      		
+    		</ul>
+  		</div>
+	</nav>
+
+	<div style="margin-top:1%;padding:1%" class="container-fluid">
+
+	<h1>Alignment Details</h1>
+	<table class="table table-bordered">
+    <tr style="color:red">
+       <th style="text-align:center">ALIGNMENT_ID</th>
+       <th style="text-align:center">PDB_ID</th>
+       <th style="text-align:center">CHAIN</th>
+       <th style="text-align:center">PDB_SEG</th>
+       <th style="text-align:center">SEQ_ID</th>
+       <th style="text-align:center">PDB_FROM</th>
+       <th style="text-align:center">PDB_TO</th>
+       <th style="text-align:center">SEQ_FROM</th>
+       <th style="text-align:center">SEQ_TO</th>
+       <th style="text-align:center">EVALUE</th>
+       <th style="text-align:center">BITSCORE</th>
+       <th style="text-align:center">IDENTITY</th>
+       <th style="text-align:center">IDENTP</th>
+       <th style="text-align:center">SEQ_ALIGN</th>
+ 
+    </tr>
+    
+    <tr th:each="detail : ${details}">
+        <td style="text-align:center" th:text="${detail.alignmentId}"></td>
+        <td style="text-align:center" th:text="${detail.pdbId}"></td>
+        <td style="text-align:center" th:text="${detail.chain}"></td>
+        <td style="text-align:center" th:text="${detail.pdbSeg}"></td>
+        <td style="text-align:center" th:text="${detail.seqId}"></td>
+        <td style="text-align:center" th:text="${detail.pdbFrom}"></td>
+        <td style="text-align:center" th:text="${detail.pdbTo}"></td>
+        <td style="text-align:center" th:text="${detail.seqFrom}"></td>
+        <td style="text-align:center" th:text="${detail.seqTo}"></td>
+        <td style="text-align:center" th:text="${detail.evalue}"></td>
+        <td style="text-align:center" th:text="${detail.bitscore}"></td>
+        <td style="text-align:center" th:text="${detail.identity}"></td>
+        <td style="text-align:center" th:text="${detail.identp}"></td>
+        <td style="text-align:center;color:blue" th:text="${#strings.substring(detail.seqAlign,0,12)}+'...'" th:title="${detail.seqAlign}"></td>
+    </tr>  
+	</table>
+
+	</div>
+</body>
+</html>

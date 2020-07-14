@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.cbioportal.G2Smutation</groupId>
+    <artifactId>G2Smutation</artifactId>
+    <packaging>pom</packaging>
+    <name>G2Smutation Master</name>
+    <version>0.1.0</version>
+    <description>master maven module</description>
+    <url>https://github.com/cBioPortal/G2Smutation/</url>
+
+    <modules>
+      <module>G2Smutation-pipeline</module>
+      <module>G2Smutation-web</module>
+    </modules>
+
+    <!-- inherit defaults from spring boot -->
+    <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>1.3.3.RELEASE</version>
+    </parent>
+
+    <properties>
+      <java.version>1.8</java.version>
+    </properties>
+    
+</project>

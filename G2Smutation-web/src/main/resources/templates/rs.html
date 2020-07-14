@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    
+	<!-- For dataTables -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="/css/datatable.css"></link>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	<!-- For Lobipanel -->
+	<link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/lobipanel.min.css"/>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/lobipanel.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script>
+		var searchChoose = 1;
+		function getChoose(choose) {
+			searchChoose = choose;
+		}
+		
+		function getDisplay() {
+			document.getElementById("rsId").style.display = 'none';
+			document.getElementById("seqId").style.display = 'none';
+			document.getElementById("seqIndex").style.display = 'none';
+			document.getElementById("seqUnion").style.display = 'none';
+			document.getElementById("pdbNo").style.display = 'none';
+			document.getElementById("pdbIndex").style.display = 'none';
+			//document.getElementById("pdbUnion").style.display = 'none';
+			if (searchChoose == 1) {
+				document.getElementById("rsId").style.display = 'block';
+			} else if (searchChoose == 2) {
+			document.getElementById("seqId").style.display = 'block';
+			} else if (searchChoose == 3) {
+			document.getElementById("seqIndex").style.display = 'block';
+			} else if (searchChoose == 4) {
+			document.getElementById("seqUnion").style.display = 'block';
+			} else if (searchChoose == 5) {
+			document.getElementById("pdbNo").style.display = 'block';
+			} else if (searchChoose == 6) {
+			document.getElementById("pdbIndex").style.display = 'block';
+			} 
+			//else if (searchChoose == 6) {
+			//document.getElementById("pdbUnion").style.display = 'block';
+			//}
+		}
+	</script>
+</head>
+
+<body>
+	<nav style="margin:0px" class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  		<a class="navbar-brand" th:href="@{/}" href="frontpage.html">G2S Web Service</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		
+  		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    		<ul class="navbar-nav mr-auto">
+      			
+      			<li class="nav-item dropdown">
+        			<a style="font-size:1.2em" class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Databases</a>
+        				<div class="dropdown-menu" aria-labelledby="dropdown01">
+          					<a class="dropdown-item" th:href="@{/database}" href="database.html">Usage Database</a>
+          					<a class="dropdown-item" th:href="@{/rs}" href="rs.html">RS Databases</a>
+        				</div>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/pageapi}" href="api.html">API</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/sequence}" href="sequence.html">Sequence</a>
+      			</li>
+      		
+    		</ul>
+  		</div>
+	</nav>
+	
+	
+	<div style="margin-top:1%;padding:1%" class="container-fluid">
+	
+	
+	<select class="custom-select" style="width:200px;height:35px;margin-bottom:1em" onchange="getChoose(this.value)">
+		<option value="1" >RS_SNP_ID</option>
+		<option value="2" >SEQ_ID</option>
+		<option value="3" >SEQ_INDEX</option>
+		<option value="4" >SEQ_ID + SEQ_INDEX</option>
+		<option value="5" >PDB_NO</option>
+		<option value="6" >PDB_INDEX</option>
+	</select>
+	<button style="width:80px;height:35px;margin-bottom:0.7em" class="btn btn-primary" onclick="getDisplay()">Start</button>
+	
+	<div id="rsId" style="display:none">
+		<form action="#" th:action="@{/rssearch/RSSNPID}" method="post">
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="RSSNPID" placeholder="e.g. 748238757" style="width:200px;height:35px;margin-bottom:1em"/>	
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+	<div id="seqId" style="display:none">
+		<form action="#" th:action="@{/rssearch/SEQID}" method="post">
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="SEQID" placeholder="e.g. 42484" style="width:200px;height:35px;margin-bottom:1em"/>	
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+	<div id="seqIndex" style="display:none">
+		<form action="#" th:action="@{/rssearch/SEQINDEX}" method="post">
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="SEQINDEX" placeholder="e.g. 543" style="width:200px;height:35px;margin-bottom:1em"/>	
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+	<div id="seqUnion" style="display:none">
+		<form action="#" th:action="@{/rssearch/SEQUNION}" method="post">
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="SEQID" placeholder="Search for SEQ_ID" title=" e.g. 42484" style="width:200px;height:35px;margin-bottom:1em"/><br/>
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="SEQINDEX" placeholder="Search for SEQ_INDEX" title=" e.g. 543" style="width:200px;height:35px;margin-bottom:1em"/>
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+	
+	<div id="pdbNo" style="display:none">
+		<form action="#" th:action="@{/rssearch/PDBNO}" method="post">
+  			<input required="required" type="text" name="PDBNO" placeholder="e.g. 6ces" style="width:200px;height:35px;margin-bottom:1em"/>	
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+	<div id="pdbIndex" style="display:none">
+		<form action="#" th:action="@{/rssearch/PDBINDEX}" method="post">
+  			<input required="required" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="PDBINDEX" placeholder="e.g. 568" style="width:200px;height:35px;margin-bottom:1em"/>	
+  			<input class="btn btn-primary" type="submit" value="Search" style="width:80px;height:35px;margin-bottom:0.2em"/>
+		</form>
+	</div>
+
+
+	<table id="rs" class="table table-striped table-bordered" style="width:100%">
+	    <thead>
+	    <tr>
+	       	<th style="text-align:center">ID</th>
+	       	<th style="text-align:center">RS_SNP_ID</th>
+	       	<th style="text-align:center">SEQ_ID</th>
+	       	<th style="text-align:center">SEQ_INDEX</th>
+	       	<th style="text-align:center">SEQ_RESIDUE</th>
+	       	<th style="text-align:center">PDB_NO</th>
+	        <th style="text-align:center">CHAIN</th>
+	       	<th style="text-align:center">PDB_INDEX</th>
+	       	<th style="text-align:center">PDB_RESIDUE</th>
+	       	<!-- 
+	       	<th style="text-align:center">3Dmol</th>
+	       	 -->
+	        <th style="text-align:center">Ngl</th>
+	    </tr>
+	    </thead>
+    	
+    	<tbody>
+	    <tr th:each="datum : ${data}">
+	        <td style="text-align:center" th:text="${datum.rsId}"></td>
+	        <td style="text-align:center"><a href="#" target="_blank" th:href="@{'/rsSnpIdWebJump?urlInfo='+${datum.rsSnpId}}" th:text="${datum.rsSnpId}"></a></td>
+	        <td style="text-align:center" th:text="${datum.seqId}"></td>
+	        <td style="text-align:center" th:text="${datum.seqIndex}"></td>
+	        <td style="text-align:center" th:text="${datum.seqResidue}"></td>
+	        <td style="text-align:center;font-size:16px" th:text="${#strings.substring(datum.pdbNo,0,4)}"></td>
+	        <td style="text-align:center;font-size:16px" th:text="${#strings.substring(datum.pdbNo,5,6)}"></td>
+	        <td style="text-align:center" th:text="${datum.pdbIndex}"></td>
+	        <td style="text-align:center" th:text="${datum.pdbResidue}"></td>
+			<!-- 
+			<td style="text-align:center"><a target="_blank" th:href="@{'/3Dmol?pdbInfo='+${datum.pdbNo}+${datum.pdbIndex}}">3Dmol</a></td>
+			-->
+			<td style="text-align:center"><a style="margin:1%" type="button" class="btn btn-primary" target="_blank" data-toggle="collapse" data-parent="#accordion" th:href="'#3d' + ${datum.rsId}" th:text="'3D Model'"></a>
+				<div th:id="'3d' + ${datum.rsId}" class="panel-collapse collapse">
+			  		<div class="panel panel-warning">
+			        <div class="panel-heading">
+			            <div class="panel-title">
+			                <h4 th:text="${datum.alignmentId}"></h4>
+			            </div>
+			        </div>
+			        <div class="panel-body">
+			        	<!--  <object data="'https://localhost:8443/ngl?pdbInfo2=' + ${datum.pdbNo} + ${datum.pdbIndex}"></object>-->
+			        	<embed th:src="'https://localhost:8443/ngl?pdbInfo2='+${datum.pdbNo+datum.pdbIndex}"></embed>
+			    	</div>
+			    	</div>
+			    	<script>
+			   		$(function(){
+			        	$('.panel').lobiPanel({
+			        		reload: false,
+			        		close: false,
+			        		editTitle: false,
+			        		minimize: false
+			        	});
+			    	});
+					</script>
+				</div>
+			</td>
+	    </tr>
+	    </tbody>
+	</table>
+	</div>
+	<script type="text/javascript" src="/js/rstable.js"></script>
+
+</body>
+</html>

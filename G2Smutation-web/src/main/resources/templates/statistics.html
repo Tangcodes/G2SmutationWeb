@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"></link>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+	<nav style="margin:0px" class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  		<a class="navbar-brand" th:href="@{/}" href="frontpage.html">G2S Web Service</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		
+  		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/pageapi}" href="api.html">API</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/sequence}" href="sequence.html">Sequence</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/database}" href="database.html">Database</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/Statistics}" href="statistics.html">Statistics</a>
+      			</li>
+    		</ul>
+  		</div>
+	</nav>
+	
+	<div class="container">
+	<h1 layout:fragment="header">Statistics of G2S databases:</h1>
+	<div layout:fragment="content" class="container-fluid">
+
+		<table
+			class="table table-bordered table-striped table-sm table-condensed"
+			style="width: 75%">
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Numbers of Entries</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Last Update Date:</td>
+					<td th:text="${statistics[0].updateDate}">1</td>
+				</tr>
+				<tr>
+					<td>Ensembl version</td>
+					<td>Human Release-90</td>
+				</tr>
+				<tr>
+					<td>Number of Nonredundant Ensembl Entries:</td>
+					<td>104817</td>
+				</tr>
+				<tr>
+					<td>Uniprot(Swissprot) version</td>
+					<td>UniProt Release 2017_09</td>
+				</tr>
+				<tr>
+					<td>Number of Nonredundant Uniprot Entries:</td>
+					<td>594927</td>
+				</tr>
+				<tr>
+					<td>Number of Combined Nonredundant Ensembl/Uniprot Entires:</td>
+					<td>559575</td>
+				</tr>
+				<tr>
+					<td>Number of PDB Entries of Chains and Segments:</td>
+					<td th:text="${statistics[0].segNum}">284458</td>
+				</tr>
+				<tr>
+					<td>Number of PDB Biological Macromolecular Structures:</td>
+					<td th:text="${statistics[0].pdbNum}">108237</td>
+				</tr>
+				<tr>
+					<td>Number of Protein-PDB alignments:</td>
+					<td th:text="${statistics[0].alignmentNum}">108237</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>G2S database stored alignments from protein
+			sequences against PDB sequences.</p>
+		<p>
+			The sources of protein sequences are from <a
+				href="ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/">Uniprot</a>
+			(Only includes Swissprot) and <a
+				href="http://ftp.ensembl.org/pub/release-90/fasta/homo_sapiens/pep/">HUMAN
+				ENSEMBL</a>. All the protein sequences are combined together to remove
+			redundancy.
+		</p>
+		<p>
+			G2S makes automatic frequent (<b>WEEKLY</b>) updates to
+			the set of pre-caculated alignments as new/obsolete/modified protein
+			structures are added to <a href="http://www.rcsb.org/">RCSB
+				Protein Data Bank</a>, while keeping the set of protein sequences from
+			public protein sequence databases fixed. Less frequently (<b>MONTHS</b>),
+			the system is re-initialized using an updated set of protein
+			sequences in new release of Uniprot/Ensembl, and during
+			re-initialization an all-against-all alignment process is executed.
+		</p>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"></link>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+	<nav style="margin:0px" class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  		<a class="navbar-brand" th:href="@{/}" href="frontpage.html">G2S Web Service</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		
+  		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/pageapi}" href="api.html">API</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/sequence}" href="sequence.html">Sequence</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/database}" href="database.html">Database</a>
+      			</li>
+      			<li class="nav-item">
+        			<a style="font-size:1.2em" class="nav-link" th:href="@{/Statistics}" href="statistics.html">Statistics</a>
+      			</li>
+    		</ul>
+  		</div>
+	</nav>
+	
+	<div class="container">
+    <h1 layout:fragment="header">Contact:</h1>
+	<div layout:fragment="content" class="container-fluid">
+		<p>If you have any questions and feedback, please contact: Juexin
+			Wang (wangjue(at)missouri.edu) and Jianjiong Gao
+			(jgao@cbio.mskcc.org)</p>
+	</div>
+	</div>
+	
+	<!-- 
+    <section id="gallery">
+       <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2018/dna.jpg" alt=""></img>
+                        <div class="card-body">
+                            <h5 class="card-title">Visualise mutations</h5>
+                            <p class="card-text">Overlay three types of cancer mutation, or a heatmap of missense recurrence, onto protein structure to add an extra dimension to COSMIC cancer genomic data.</p>
+                            <a href="" class="btn btn-outline-success btn-sm">Explore>></a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.futurity.org/wp/wp-content/uploads/2017/11/DNA-zipping-illustration_740.jpg" alt=""></img>
+                        <div class="card-body">
+                            <h5 class="card-title">Generate hypotheses</h5>
+                            <p class="card-text">See indicative models of missense mutants and generate hypotheses as to the effects of the mutation on protein structure and drug binding.</p>
+                            <a href="" class="btn btn-outline-success btn-sm">Explore>></a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://cursa.ihmc.us/rid=1MZ8QY7F9-D1M33Q-1WPR/ADN_GCESAR2.jpg" alt=""></img>
+                        <div class="card-body">
+                            <h5 class="card-title">Understand impact</h5>
+                            <p class="card-text">Infer functional consequences from a different perspective on cancer mutation data.</p>
+                            <a href="" class="btn btn-outline-success btn-sm">Explore>></a>
+                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </section>
+ 	-->
+</body>
+
+</html>
