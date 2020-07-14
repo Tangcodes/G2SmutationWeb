@@ -9,7 +9,6 @@
     <url>https://github.com/cBioPortal/G2Smutation/</url>
 
     <modules>
-      <module>G2Smutation-pipeline</module>
       <module>G2Smutation-web</module>
     </modules>
 
